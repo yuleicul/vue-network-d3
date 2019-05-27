@@ -127,7 +127,7 @@ export default {
         };
       } else {
         return {
-          bgcolor: "gray",
+          bgcolor: "#222",
           nodeStroke: "white",
           linkStroke: "white",
           textFill: "white"

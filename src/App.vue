@@ -2,6 +2,9 @@
   <div id="app">
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
     <!-- <Network msg="Welcome to Your Vue.js App"/> -->
+    <div id="modeSwitch">
+    <input type="checkbox" name=""  v-model="mode" true-value='dark' false-value='light'> dark
+    </div>
     <network v-if="canRender" :nodes="nodes" :links="links" :showLinkText="showLinkText"
     :mode="mode"></network>
   </div>
@@ -52,5 +55,9 @@ html {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px; */
+}
+#modeSwitch {
+  position: absolute;
+  top: 20px
 }
 </style>
