@@ -8,8 +8,9 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "d3": "^3.5.17",
-    "vue": "^2.6.10"
+    "d3": "^5.9.2",
+    "vue": "^2.6.10",
+    "d3-selection-multi": "^1.0.1"
   },
   "devDependencies": {
     "@vue/cli-service": "^3.7.0",
