@@ -67,7 +67,7 @@ body {
 
 ```js
 props: {
-		nodeList: Array,
+    nodeList: Array,
     linkList: Array,
     // node related:
     nodeSize: {
@@ -152,16 +152,16 @@ props: {
 - :star: **linkList**: Array of **Link Object** which has
 
   - :star: **source**: Number or String. Id of source node.
-	- :star: **target**: Number or String. Id of target node.
+  - :star: **target**: Number or String. Id of target node.
   - **value**: Number or String. Link name (can be changed by **linkTextKey**)
 
 - **nodeSize**: Number.
 
 - **nodeTextKey**: String. Key of node text/name. The default value is 'id',  you need to set it to 'name' if your node object is like:
 
-  ```json
+  ```js
   {
-  	id: 1010,
+    id: 1010,
     name: 'Myriel'
   }
   ```
@@ -185,7 +185,7 @@ props: {
 
   ```js
   {
-  	source: 'Napoleon',
+    source: 'Napoleon',
     target: "Myriel", 
     name: 'friend'
   }
@@ -238,7 +238,7 @@ Repo: [vue-d3-network](https://github.com/emiliorizzo/vue-d3-network),  Vue comp
 
 ## TODO
 
-- [ ] Docs: props and events
+- [x] Docs: props and events
 - [ ] Learn [Vue-CLI](https://cli.vuejs.org/zh/) more
 - [ ] Fix: node's style when hover
 - [ ] Travis CI
