@@ -1,19 +1,41 @@
 {
   "name": "vue-d3-force-network",
   "version": "0.1.0",
-  "private": true,
+  "description": "D3 Force-Directed Graph as Vue Component.",
+  "main": "dist/vue-d3-force-network.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "dev": "vue-cli-service serve",
+    "build": "npm run build-component && npm run clean-dist",
+    "build-component": "vue-cli-service build --target lib --name vue-d3-force-network src/components/Network.vue",
+    "clean-dist": "rm dist/demo.html"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChenCyl/vue-d3-force-network"
+  },
+  "bugs": {
+    "url": "https://github.com/ChenCyl/vue-d3-force-network/issues"
+  },
+  "keywords": [
+    "vue",
+    "d3",
+    "d3-force",
+    "network",
+    "force-directed",
+    "graph",
+    "component"
+  ],
   "dependencies": {
-    "axios": "^0.18.0",
     "d3": "^5.9.2",
-    "vue": "^2.6.10",
     "d3-selection-multi": "^1.0.1"
   },
   "devDependencies": {
+    "vue": "^2.6.10",
+    "axios": "^0.18.0",
     "@vue/cli-service": "^3.7.0",
     "vue-template-compiler": "^2.5.21"
-  }
+  },
+  "author": "ChenCyl",
+  "license": "MIT"
 }

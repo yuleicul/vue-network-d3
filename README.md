@@ -1,29 +1,72 @@
 # vue-d3-force-network
 
-## Project setup
+> D3 Force-Directed Graph as Vue Component.
+
+## Demo
+
+- [Simple Demo]()
+
+  ![simple-demo](./doc-assets/simple-demo.gif)
+
+- [Film Knowledge Graph]()
+
+  ![]()
+
+## Install
+
 ```
-yarn install
+npm install vue-d3-force-network --save
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
+## Quick Start
+
+```vue
+<template>
+  <div id="app">
+    <network :nodeList="nodes" :linkList="links"></network>
+  </div>
+</template>
+
+<script>
+import Network from "vue-d3-force-network";
+
+export default {
+  name: "app",
+  components: {
+    Network
+  },
+  data() {
+    return {
+      nodes: [
+      	{"id": "Myriel", "group": 1},
+      	{"id": "Napoleon", "group": 1},
+        {"id": "Labarre", "group": 2},
+        {"id": "Valjean", "group": 2}
+      ],
+      links: [
+        {"source": "Napoleon", "target": "Myriel", "value": 1},
+        {"source": "Valjean", "target": "Labarre", "value": 1}
+      ]
+    };
+  },
+};
+</script>
+
+<style>
+body {
+  margin: 0;
+}
+</style>
+
 ```
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## Props
 
-### Run your tests
-```
-yarn run test
-```
 
-### Lints and fixes files
-```
-yarn run lint
-```
+## Events
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## TODO
+- [ ] Travis CI
+
+
+
