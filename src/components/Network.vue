@@ -65,10 +65,17 @@
 </template>
 
 <script>
-import * as d3 from "d3"; 
-import d3SelectionMulti from "d3-selection-multi";
+import * as d3 from "d3";
+// import * as d3Force from 'd3-force'
+// import * as d3Zoom from 'd3-zoom'
+// import * as d3Scale from 'd3-scale'
+// import * as d3Selection from 'd3-selection'
+// import * as d3Drag from 'd3-drag'
+// import * as d3ScaleChromatic from 'd3-scale-chromatic'
 
-// const d3 = Object.assign({}, d3Origin, d3SelectionMulti)
+// import d3SelectionMulti from "d3-selection-multi";
+
+// const d3 = Object.assign({}, d3Force, d3Zoom, d3Scale, d3Selection, d3Drag)
 
 // 元素的 classList 是 DOMTokenList
 DOMTokenList.prototype.indexOf = Array.prototype.indexOf;
@@ -133,7 +140,7 @@ export default {
     svgTheme: {
       type: String,
       default: "light" // dark or light
-    }, 
+    },
     bodyStrength: {
       type: Number,
       default: -150
@@ -142,7 +149,7 @@ export default {
     highlightNodes: {
       type: Array,
       default: () => {
-        return []
+        return [];
       }
     }
   },
@@ -190,7 +197,8 @@ export default {
           linkStroke: "lightgray",
           textFill: "black"
         };
-      } else { // dark
+      } else {
+        // dark
         return {
           bgcolor: "black",
           nodeStroke: "white",
@@ -212,7 +220,6 @@ export default {
       this.$nextTick(function() {
         this.initDragTickZoom();
       });
-      
     },
     nodes: function() {
       this.initData();
@@ -245,7 +252,7 @@ export default {
         .force(
           "center",
           d3.forceCenter(this.svgSize.width / 2, this.svgSize.height / 2)
-        )
+        );
 
       // console.log(this.nodes);
       // console.log(this.links);
@@ -253,43 +260,32 @@ export default {
     initDragTickZoom() {
       // 给节点添加拖拽
       d3.selectAll(".node").call(this.drag(this.force));
-      this.force
-        .on("tick", () => {
-          // 更新连线坐标
-          d3.selectAll(".link")
-            .data(this.links)
-            .attrs({
-              x1: d => d.source.x,
-              y1: d => d.source.y,
-              x2: d => d.target.x,
-              y2: d => d.target.y
-            });
-          // 更新节点坐标
-          d3.selectAll(".node")
-            .data(this.nodes)
-            .attrs({
-              cx: d => d.x,
-              cy: d => d.y
-            });
-          // 更新文字坐标
-          d3.selectAll(".node-text")
-            .data(this.nodes)
-            .attrs({
-              x: d => d.x,
-              y: d => d.y
-            });
-          d3.selectAll(".link-text")
-            .data(this.links)
-            .attrs({
-              x: d => (d.source.x + d.target.x) / 2,
-              y: d => (d.source.y + d.target.y) / 2
-            });
-        });
+      this.force.on("tick", () => {
+        // 更新连线坐标
+        d3.selectAll(".link")
+          .data(this.links)
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+        // 更新节点坐标
+        d3.selectAll(".node")
+          .data(this.nodes)
+          .attr("cx", d => d.x)
+          .attr("cy", d => d.y);
+        // 更新文字坐标
+        d3.selectAll(".node-text")
+          .data(this.nodes)
+          .attr("x", d => d.x)
+          .attr("y", d => d.y);
+        d3.selectAll(".link-text")
+          .data(this.links)
+          .attr("x", d => (d.source.x + d.target.x) / 2)
+          .attr("y", d => (d.source.y + d.target.y) / 2);
+      });
 
       // 初始化 zoom
-      this.zoom
-        .scaleExtent([0.1, 4])
-        .on("zoom", this.zoomed); 
+      this.zoom.scaleExtent([0.1, 4]).on("zoom", this.zoomed);
 
       d3.select("svg")
         .call(this.zoom)
@@ -302,9 +298,7 @@ export default {
       if (this.pinned.length === 0) {
         this.pinnedState(e);
       } else {
-        d3.selectAll(".element").styles({
-          opacity: 0.2
-        });
+        d3.selectAll(".element").style("opacity", 0.2);
         this.pinned = [];
       }
       this.$emit("clickNode", e);
@@ -332,7 +326,7 @@ export default {
         };
         this.linkTextContent = e.target.__data__[this.linkTextKey];
         this.linkTextVisible = true;
-        this.$emit("hoverLink", e); 
+        this.$emit("hoverLink", e);
       }
     },
     svgMouseout(e) {
@@ -353,9 +347,7 @@ export default {
       // 周围节点显示文字、边和结点增加 selected class、添加进 selection
       this.lightNeibor(e.target.__data__);
       // 除了 selected 的其余节点透明度减小
-      d3.selectAll(".element").styles({
-        opacity: 0.2
-      });
+      d3.selectAll(".element").style("opacity", 0.2);
     },
     noSelectedState(e) {
       // 节点自身不显示文字、移除 selected class
@@ -364,15 +356,11 @@ export default {
       // 周围节点不显示文字、边和结点移除 selected class
       this.darkenNerbor();
       // 所有节点透明度恢复
-      d3.selectAll(".element").styles({
-        opacity: 1
-      });
+      d3.selectAll(".element").style("opacity", 1);
     },
     pinnedState(e) {
       this.pinned.push(e.target.__data__.index);
-      d3.selectAll(".element").styles({
-        opacity: 0.05
-      });
+      d3.selectAll(".element").style("opacity", 0.05);
     },
     lightNeibor(node) {
       this.links.forEach(link => {

@@ -1,4 +1,4 @@
-# vue-d3-force-network
+# vue-network-d3
 
 > D3 Force-Directed Graph as Vue Component.
 
@@ -15,7 +15,7 @@
 ## Install
 
 ```
-npm install vue-d3-force-network --save
+npm install vue-network-d3 --save
 ```
 
 ## Quick Start
@@ -28,7 +28,7 @@ npm install vue-d3-force-network --save
 </template>
 
 <script>
-import Network from "vue-d3-force-network";
+import Network from "vue-network-d3";
 
 export default {
   name: "app",
