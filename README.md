@@ -66,6 +66,7 @@ body {
 ## Events
 
 ## TODO
+- [ ] Fix: node's style when hover
 - [ ] Travis CI
 
 
