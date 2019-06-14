@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <network :nodeList="nodes" :linkList="links"></network>
+    <network :nodeList="nodes" :linkList="links" @clickNode="clickNode"></network>
   </div>
 </template>
 
@@ -23,18 +23,16 @@ export default {
       ],
       links: [
         { source: "Napoleon", target: "Myriel", value: 1 },
-        { source: "Valjean", target: "Labarre", value: 1 }
+        { source: "Valjean", target: "Labarre", value: 1 },
+        {"source": "Napoleon", "target": "Valjean", "value": 2}
       ]
     };
   },
-  created() {
-    // axios
-    //   .get("/example.json")
-    //   .then(response => {
-    //     this.nodes = response.data.nodes;
-    //     this.links = response.data.links;
-    //   })
-    //   .catch(err => console.log(err));
+  methods: {
+    clickNode(e, node) {
+      console.log(e)
+      console.log(node)
+    }
   }
 };
 </script>

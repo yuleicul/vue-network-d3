@@ -292,7 +292,7 @@ export default {
         .on("dblclick.zoom", null);
     },
     clickLink(e) {
-      this.$emit("clickLink", e);
+      this.$emit("clickLink", e, e.target.__data__);
     },
     clickNode(e) {
       if (this.pinned.length === 0) {
@@ -301,7 +301,7 @@ export default {
         d3.selectAll(".element").style("opacity", 0.2);
         this.pinned = [];
       }
-      this.$emit("clickNode", e);
+      this.$emit("clickNode", e, e.target.__data__);
     },
     clickEle(e) {
       if (e.target.tagName === "circle") {
@@ -317,7 +317,7 @@ export default {
         }
         // 强制刷新
         this.$forceUpdate();
-        this.$emit("hoverNode", e.target);
+        this.$emit("hoverNode", e, e.target.__data__);
       } else if (e.target.nodeName === "line") {
         // 显示关系文本
         this.linkTextPosition = {
@@ -326,7 +326,7 @@ export default {
         };
         this.linkTextContent = e.target.__data__[this.linkTextKey];
         this.linkTextVisible = true;
-        this.$emit("hoverLink", e);
+        this.$emit("hoverLink", e, e.target.__data__);
       }
     },
     svgMouseout(e) {
