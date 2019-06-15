@@ -8,7 +8,8 @@
     "dev": "vue-cli-service serve",
     "build": "npm run build-component && npm run clean-dist",
     "build-component": "vue-cli-service build --target lib --name vue-network-d3 src/components/Network.vue",
-    "clean-dist": "rm dist/demo.html"
+    "clean-dist": "rm dist/demo.html",
+    "build-page": "vue-cli-service build --dest page"
   },
   "repository": {
     "type": "git",
