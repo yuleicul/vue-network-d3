@@ -6,13 +6,13 @@
 
 - [Simple Demo](https://chencyl.github.io/vue-network-d3/)
 
-  <img src="./doc-assets/simple-demo.gif" width="500px"></img>
+  <img src="./doc-assets/simple-demo.gif" width="500px" />
 
   
 
-- [Film Knowledge Graph]()
+- [Film Knowledge Graph]() (coming soon...)
 
-  ![]()
+  <img src="./doc-assets/film-kg.gif" width="500px" />
 
 ## Install
 
