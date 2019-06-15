@@ -20,8 +20,9 @@ export default {
     };
   },
   created() {
+    let url = process.env.NODE_ENV === 'production'? '/vue-network-d3/example.json':'/example.json'
     axios
-      .get("/example.json")
+      .get(url)
       .then(response => {
         this.nodes = response.data.nodes;
         this.links = response.data.links;

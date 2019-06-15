@@ -4,9 +4,11 @@
 
 ## Demo
 
-- [Simple Demo]()
+- [Simple Demo](https://chencyl.github.io/vue-network-d3/)
 
-  ![simple-demo](./doc-assets/simple-demo.gif)
+  <img src="./doc-assets/simple-demo.gif" width="500px"></img>
+
+  
 
 - [Film Knowledge Graph]()
 
