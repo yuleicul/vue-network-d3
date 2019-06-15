@@ -1,6 +1,6 @@
 {
   "name": "vue-network-d3",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "D3 Force-Directed Graph as Vue Component.",
   "main": "dist/vue-network-d3.umd.js",
   "scripts": {

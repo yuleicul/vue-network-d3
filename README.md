@@ -231,17 +231,19 @@ props: {
 
 ## Reference
 
-Repo: [vue-d3-network](https://github.com/emiliorizzo/vue-d3-network),  Vue component to graph networks using d3-force.
+### Repo
 
+- [vue-d3-network](https://github.com/emiliorizzo/vue-d3-network), Vue component to graph networks using d3-force.
 
+- [react-vis-force](https://github.com/uber/react-vis-force), d3-force graphs as React Components.
 
 
 ## TODO
 
 - [x] Docs: props and events
 - [ ] Learn [Vue-CLI](https://cli.vuejs.org/zh/) more
-- [ ] Fix: node's style when hover
-- [ ] Travis CI
+- [x] Fix: node's style when hover
+- [ ] CI
 
 
 
