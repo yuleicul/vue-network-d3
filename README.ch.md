@@ -1,28 +1,26 @@
 # vue-network-d3
 
-[中文文档](./README.ch.md)
-
-> D3 Force-Directed Graph as Vue Component.
+> D3 力导向图的 Vue 组件。
 
 ## Demo
 
-- [Simple Demo](https://chencyl.github.io/vue-network-d3/)
+- [简易的 Demo](https://chencyl.github.io/vue-network-d3/)
 
   <img src="./doc-assets/simple-demo.gif" width="500px" />
 
   
 
-- [Film Knowledge Graph]() (coming soon...)
+- [电影图谱]() (coming soon...)
 
   <img src="./doc-assets/film-kg.gif" width="500px" />
 
-## Install
+## 安装
 
 ```
 npm install vue-network-d3 --save
 ```
 
-## Quick Start
+## 快速开始
 
 ```vue
 <template>
@@ -67,13 +65,13 @@ body {
 
 ## Props
 
-### Overview
+### 总览
 
 ```js
 props: {
     nodeList: Array,
     linkList: Array,
-    // node related:
+    // 节点相关：
     nodeSize: {
       type: Number,
       default: 14
@@ -94,7 +92,7 @@ props: {
       type: Number,
       default: -150
     },
-    // link related:
+    // 连线相关：
     linkWidth: {
       type: Number,
       default: 2
@@ -119,7 +117,7 @@ props: {
       type: Number,
       default: 50
     },
-    // svg raleted:
+    // svg 画布相关：
     svgSize: {
       type: Object,
       default: () => {
@@ -133,7 +131,7 @@ props: {
       type: String,
       default: "light" // dark or light
     },
-    // others:
+    // 其他：
     highlightNodes: {
       type: Array,
       default: () => {
@@ -144,24 +142,24 @@ props: {
 
 ```
 
-### Detailed Design
+### 详细说明
 
-> 「:star:」​ means necessary
+> 「:star:」​ 代表必要的。
 
-- :star: ​**nodeList**: Array of **Node Object** which has
+- :star: ​**nodeList**: Array of **Node Object**. 节点对象数组，节点包含属性：
 
-  - :star: **id**: Number or String. Node id and also node name (can be changed by **nodeTextKey**)
-  - **group**: Number or String. like node type (can be changed by **nodeTypeKey**)
+  - :star: **id**: Number or String. 节点 id，也是节点的 name。如果想让节点的名称是属性 name 的值，需要将 **nodeTextKey** 赋值为 name（详情见下）。
+  - **group**: Number or String. 节点的分类 / 分组 / 类型，同样，如果想让节点的类型是属性 type 的值，需要将 **nodeTypeKey** 赋值为 type（详情见下）。
 
-- :star: **linkList**: Array of **Link Object** which has
+- :star: **linkList**: Array of **Link Object**. 连线 / 关系对象数组，连线包含属性：
 
   - :star: **source**: Number or String. Id of source node.
   - :star: **target**: Number or String. Id of target node.
-  - **value**: Number or String. Link name (can be changed by **linkTextKey**)
+  - **value**: Number or String. 连线的名称，同样，如果想让连线的名称是属性 name 的值，需要将 **linkTextKey** 赋值为 name（详情见下）。
 
-- **nodeSize**: Number.
+- **nodeSize**: Number. 节点大小。
 
-- **nodeTextKey**: String. Key of node text/name. The default value is 'id',  you need to set it to 'name' if your node object is like:
+- **nodeTextKey**: String. 节点名称的 key，默认是 'id'，如果你的节点对象像下面这样，那么你需要把 **nodeTextKey** 设置为 'name'
 
   ```js
   {
@@ -170,7 +168,7 @@ props: {
   }
   ```
 
-- **nodeTypeKey**: String. Key of node type. The default value is 'group', you need to set it to 'type' if your node object is like: 
+- **nodeTypeKey**: String. 节点类型的 key，默认是 'group'，如果你的节点对象像下面这样，那么你需要把 **nodeTypeKey** 设置为 'type'
 
   ```js
   {
@@ -179,13 +177,13 @@ props: {
   }
   ```
 
-- **nodeTextFontSize**: Number.
+- **nodeTextFontSize**: Number. 节点名称文本字体大小。
 
-- **linkWidth**: Number.
+- **linkWidth**: Number. 连线宽度。
 
-- **showLinkText**: Boolean. Show link text or not. Suggest keeping it **false**, link text will show when you hover on the link.
+- **showLinkText**: Boolean. 是否显示连线名称文本，建议不显示，因为名称默认会在鼠标 hover 到连线上的时候显示。
 
-- **linkTextKey**: String. Key of link text/name. The default value is 'value', you need to set it to 'name' If your link object is like: 
+- **linkTextKey**: String. 连线名称的 key，默认是 'value'，如果你的节点对象像下面这样，那么你需要把 **linkTextKey** 设置为 'name'
 
   ```js
   {
@@ -195,45 +193,40 @@ props: {
   }
   ```
 
-- **linkTypeKey**: String. Key of link type. The default value is 'type'.
+- **linkTypeKey**: String. 连线类型的 key，默认是 'type'。
 
-- **linkTextFrontSize**: Number.
+- **linkTextFrontSize**: Number. 连线名称文本字体大小。
 
-- **linkDistance**: Number.
+- **linkDistance**: Number. 连线距离 / 长度。
 
-- **svgSize**: **Object** which has
+- **svgSize**: **Object**. 包含：
 
-  - **width**: Number.
-  - **height**: Number
+  - **width**: Number. svg 画布的宽。
+  - **height**: Number. svg 画布的高。
 
-- **svgTheme**: String. 'light' or 'dark', 'light' is default.
+- **svgTheme**: String. svg 画布的主题颜色，有 'light' 和 'dark' 两种，默认是 'light'。
 
-- **bodyStrength**: Number. *A positive value causes nodes to attract each other, similar to gravity, while a negative value causes nodes to repel each other, similar to electrostatic charge*.
+- **bodyStrength**: Number. 正值使节点相互吸引，负值使节点相互排斥。
 
-- **highlightNodes**: Array of node id. Stroke of nodes turn yellow.
+- **highlightNodes**: Array of node id. 节点 id 数组，id 在此数组中的节点的**轮廓为黄色**。
 
-  
-
-## Events
+## 事件
 
 - **clickNode**: emits **(event, node-object)**
 - **clickLink**: emits **(event, link-object)**
 - **hoverNode**: emits **(event, node-object)**
 - **hoverLink**: emits **(event, link-object)**
 
-
-
-## Classes
+## 类
 
 - **.element**: all nodes and links
 - **.node**: all nodes
 - **.link**: all links
-- **.[type]**: nodes where node[nodeTypeKey] == type, links where link[linkTypeKey] == type
-- **.selected**: selected nodes (clicked node with its first layer nodes)
+- **.[type]**: [type] 类型的节点或边。在节点对象中，type 是 key 为 nodeTypeKey 的 key 的值。（好绕… 我晕了… 解释不清楚… 有问题发 issue 好了）
+- **.selected**: 被点击的节点以及与它相连的第一层节点。
 
 
-
-## Reference
+## 参考
 
 ### Repo
 
@@ -248,6 +241,7 @@ props: {
 - [ ] Learn [Vue-CLI](https://cli.vuejs.org/zh/) more
 - [x] Fix: node's style when hover
 - [ ] CI
+
 
 
 
