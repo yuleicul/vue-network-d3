@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <el-button class="setting-box-button" icon="el-icon-s-operation" circle @click="showSettingCard=!showSettingCard"></el-button>
-    <a href="https://github.com/ChenCyl/vue-network-d3"><img class="github-button" src="/github.png" height="35px"></a> 
     <el-card class="setting-box-card" v-if="showSettingCard">
       <div slot="header" class="clearfix">
         <span>设置</span>
@@ -90,11 +89,5 @@ body {
   right: 15px;
   width: 500px;
   max-height: 700px;
-}
-.github-button {
-  position: fixed;
-  overflow: auto;
-  top: 85px;
-  right: 44px;
 }
 </style>
