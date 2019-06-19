@@ -1,4 +1,4 @@
-# vue-network-d3
+# [vue-network-d3](https://github.com/ChenCyl/vue-network-d3)
 
 [中文文档](./README.ch.md)
 
@@ -10,9 +10,9 @@
 
   <img src="./doc-assets/simple-demo.gif" width="500px" />
 
-  
 
-- [Film Knowledge Graph]() (coming soon...)
+
+- [Film Knowledge Graph](https://github.com/ChenCyl/movie-kg-frontend)
 
   <img src="./doc-assets/film-kg.gif" width="500px" />
 

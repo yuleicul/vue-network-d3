@@ -1,4 +1,4 @@
-# vue-network-d3
+# [vue-network-d3](https://github.com/ChenCyl/vue-network-d3)
 
 > D3 力导向图的 Vue 组件。
 
@@ -10,7 +10,7 @@
 
   
 
-- [电影图谱]() (coming soon...)
+- [电影图谱](https://github.com/ChenCyl/movie-kg-frontend)
 
   <img src="./doc-assets/film-kg.gif" width="500px" />
 

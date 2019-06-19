@@ -28,7 +28,8 @@
     "component"
   ],
   "dependencies": {
-    "d3": "^5.9.2"
+    "d3": "^5.9.2",
+    "element-ui": "^2.9.1"
   },
   "devDependencies": {
     "vue": "^2.6.10",
